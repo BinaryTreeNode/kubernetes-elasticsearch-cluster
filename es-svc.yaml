@@ -1,6 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: intranet
+    #service.beta.kubernetes.io/alicloud-loadbalancer-id: your-loadbalancer-id
   name: elasticsearch
   labels:
     component: elasticsearch
@@ -12,4 +15,4 @@ spec:
   ports:
   - name: http
     port: 9200
-#type: LoadBalancer
+  type: LoadBalancer

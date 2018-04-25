@@ -7,7 +7,7 @@ metadata:
     role: data
 spec:
   serviceName: elasticsearch-data
-  replicas: 3
+  replicas: 2
   template:
     metadata:
       labels:
@@ -25,7 +25,7 @@ spec:
           privileged: true
       containers:
       - name: es-data
-        image: quay.io/pires/docker-elasticsearch-kubernetes:6.2.3_1
+        image: quay.io/pires/docker-elasticsearch-kubernetes:5.6.4
         env:
         - name: NAMESPACE
           valueFrom:
@@ -67,8 +67,8 @@ spec:
   - metadata:
       name: storage
     spec:
-      storageClassName: standard
+      storageClassName: alicloud-disk-available
       accessModes: [ ReadWriteOnce ]
       resources:
         requests:
-          storage: 12Gi
+          storage: 40Gi
