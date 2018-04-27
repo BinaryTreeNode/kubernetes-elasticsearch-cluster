@@ -24,7 +24,7 @@ spec:
           privileged: true
       containers:
       - name: es-master
-        image: k8s/elasticsearch:5.6.9
+        image: registry-intl.ap-southeast-1.aliyuncs.com/togetu/elasticsearch:latest
         env:
         - name: NAMESPACE
           valueFrom:
@@ -63,7 +63,9 @@ spec:
             port: transport
         volumeMounts:
         - name: storage
-          mountPath: /data
+          mountPath: /usr/share/elasticsearch/data
+      imagePullSecrets:
+        - name: regsecret
       volumes:
           - emptyDir:
               medium: ""

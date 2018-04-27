@@ -22,9 +22,11 @@ spec:
         - vm.max_map_count=262144
         securityContext:
           privileged: true
+      imagePullSecrets:
+        - name: regsecret
       containers:
       - name: es-client
-        image: k8s/elasticsearch:5.6.9
+        image: registry-intl.ap-southeast-1.aliyuncs.com/togetu/elasticsearch:latest
         env:
         - name: NAMESPACE
           valueFrom:
@@ -69,7 +71,7 @@ spec:
           timeoutSeconds: 5
         volumeMounts:
         - name: storage
-          mountPath: /data
+          mountPath: /usr/share/elasticsearch/data
       volumes:
           - emptyDir:
               medium: ""
