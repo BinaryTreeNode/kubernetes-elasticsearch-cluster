@@ -27,7 +27,7 @@ spec:
         - name: regsecret
       containers:
       - name: es-data
-        image: registry-intl.ap-southeast-1.aliyuncs.com/togetu/elasticsearch:latest
+        image: registry-intl.ap-southeast-1.aliyuncs.com/togetu/elasticsearch:5.6.8
         env:
         - name: NAMESPACE
           valueFrom:

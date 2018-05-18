@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/alicloud-loadbalancer-address-type: intranet
+    #service.beta.kubernetes.io/alicloud-loadbalancer-region: ap-south-1
+    service.beta.kubernetes.io/alicloud-loadbalancer-id: lb-6gjj9jhxz2du1a6a9yc7z 
+  name: elasticsearch
+  labels:
+    component: elasticsearch
+    role: client
+spec:
+  selector:
+    component: elasticsearch
+    role: client
+  ports:
+  - name: http
+    port: 9200
+    protocol: TCP
+  - name: transport
+    port: 9300
+    protocol: TCP
+  type: LoadBalancer

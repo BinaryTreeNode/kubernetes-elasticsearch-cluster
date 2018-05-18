@@ -52,7 +52,7 @@ fi
 # run
 if [[ $(whoami) == "root" ]]; then
     chown -R elasticsearch:elasticsearch $BASE
-    chown -R elasticsearch:elasticsearch /data
+    chown -R elasticsearch:elasticsearch $BASE/data
     #exec su-exec elasticsearch $BASE/bin/elasticsearch $ES_EXTRA_ARGS
     exec su elasticsearch /usr/local/bin/docker-entrypoint.sh
 else
@@ -62,5 +62,6 @@ else
     # the volumes already have the right permissions. this is
     # the case for kubernetes for example, when 'runAsUser: 1000'
     # and 'fsGroup:100' are defined in the pod's security context.
-    $BASE/bin/elasticsearch $ES_EXTRA_ARGS
+    #$BASE/bin/elasticsearch $ES_EXTRA_ARGS
+    /usr/local/bin/docker-entrypoint.sh
 fi
