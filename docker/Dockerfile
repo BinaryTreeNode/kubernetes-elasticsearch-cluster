@@ -30,4 +30,7 @@ COPY config /usr/share/elasticsearch/config
 # Copy run script
 COPY run.sh /
 
+
+USER root
+
 CMD ["/run.sh"]

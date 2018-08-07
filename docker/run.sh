@@ -53,8 +53,8 @@ fi
 if [[ $(whoami) == "root" ]]; then
     chown -R elasticsearch:elasticsearch $BASE
     chown -R elasticsearch:elasticsearch $BASE/data
-    #exec su-exec elasticsearch $BASE/bin/elasticsearch $ES_EXTRA_ARGS
-    exec su elasticsearch /usr/local/bin/docker-entrypoint.sh
+    exec su elasticsearch $BASE/bin/elasticsearch $ES_EXTRA_ARGS
+    #exec su elasticsearch /usr/local/bin/docker-entrypoint.sh
 else
     # the container's first process is not running as 'root', 
     # it does not have the rights to chown. however, we may
@@ -62,6 +62,5 @@ else
     # the volumes already have the right permissions. this is
     # the case for kubernetes for example, when 'runAsUser: 1000'
     # and 'fsGroup:100' are defined in the pod's security context.
-    #$BASE/bin/elasticsearch $ES_EXTRA_ARGS
-    /usr/local/bin/docker-entrypoint.sh
+    $BASE/bin/elasticsearch $ES_EXTRA_ARGS
 fi
