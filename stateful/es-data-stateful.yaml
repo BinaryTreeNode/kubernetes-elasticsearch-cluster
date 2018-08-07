@@ -51,6 +51,7 @@ spec:
           valueFrom:
             resourceFieldRef:
               resource: limits.cpu
+        imagePullPolicy: "Always"
         resources:
           limits:
             cpu: 1
