@@ -24,7 +24,7 @@ spec:
           privileged: true
       containers:
       - name: es-master
-        image: registry-intl.ap-southeast-1.aliyuncs.com/togetu/elasticsearch:5.6.8
+        image: registry-intl.ap-southeast-1.aliyuncs.com/tgu/elasticsearch:5.6.8
         env:
         - name: NAMESPACE
           valueFrom:
